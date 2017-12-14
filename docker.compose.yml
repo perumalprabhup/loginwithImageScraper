@@ -1,0 +1,32 @@
+version: '0'
+
+services:
+    web:
+        image: imageScrapper
+        build: /
+        command: node app.js
+           
+           ports:
+           
+                - "3000:3000"
+           
+            volumes:
+           
+                -/usr/src/app
+                -/usr/src/app/node_modules
+
+            depends_on:
+
+                -"mongo"
+
+            mongo:
+
+                image:"mongo"
+                ports:
+                    -"27017:27017"
+                   
+            adminmongo:
+                image:"mrvautin/test"
+                ports:
+                    -"1234:1234"
+            
